@@ -10,9 +10,11 @@ import { tap, map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'foodplan';
-  httpResponse: String;
+  httpResponse: Observable<String>;
+  test: string;
   constructor(private http: HttpClient) { }
   ngOnInit() {
-    this.http.get('http://localhost:3000', { responseType : 'text'}).subscribe(result => this.httpResponse = result);
+    this.httpResponse = this.http.get('http://localhost:3000', { responseType: 'text' });
+    this.test = 'request was sent';
   }
 }

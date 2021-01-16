@@ -5,7 +5,9 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --config nodemon.json src/index.ts",
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mariadb": "^2.5.2"
+    "mariadb": "^2.5.2",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.1"
   }
 }

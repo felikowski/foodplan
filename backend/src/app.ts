@@ -14,12 +14,13 @@ async function asyncFunction(): Promise<string> {
         host: 'localhost',
         user: 'foodplan_user',
         password: 'foodplan',
+        database: 'foodplan',
         connectionLimit: 5
     });
     let conn;
     try {
         conn = await pool.getConnection();
-        const rows = await conn.query("SELECT 1 as val");
+        const rows = await conn.query("SELECT * FROM recipe");
         return rows;
     } catch (err) {
         console.log(err);

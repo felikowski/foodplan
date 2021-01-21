@@ -4,10 +4,13 @@
   "description": "backend for foodplan app",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "rimraf ../build/frontend/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
+    "start-node": "xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" -n node,ts,ng -c yellow,blue,red -k",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --config nodemon.json src/app.ts",
-    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/app.ts"
+    "start-dev-all": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
+    "start-dev-node": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
+    "start-dev-ng": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
+    "dev:debug": "xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon --inspect ../build/backend/dist/app.js\" \"cd ../frontend/foodplan && ng build --watch\""
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +21,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.13.4",
     "mariadb": "^2.5.2",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.1"
   }

@@ -1,13 +1,26 @@
 import express from 'express';
+const api = require('./routes/api');
+const path = require('path');
+const bodyParser = require('body-parser');
 var cors = require('cors');
 
 const app = express();
+
+// Parsers for POST data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const port = 3000;
-app.use(cors())
-app.get('/', async (req, res) => {
-    console.log('request came in');
-    res.send(await asyncFunction());
-});
+app.use( express.static(path.join(__dirname, '../../frontend/dist')));
+app.use('/api', api);
+
+
+app.use('*', (req, res) => {
+    const indexPath = path.join(__dirname, '../../frontend/dist/index.html');
+    console.log(indexPath);
+    res.sendFile(indexPath);
+  });
+
 async function asyncFunction(): Promise<string> {
     const mariadb = require('mariadb');
     const pool = mariadb.createPool({

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +11,11 @@ import { tap, map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'foodplan';
+  title = 'Essensplaner';
   httpResponse: Observable<String>;
-  test: string;
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, public route: ActivatedRoute) { }
   ngOnInit() {
     this.httpResponse = this.http.get('http://localhost:3000', { responseType: 'text' });
-    this.test = 'request was sent';
   }
 }

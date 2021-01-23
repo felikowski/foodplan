@@ -1,0 +1,6 @@
+<ul ngbNav #nav="ngbNav" [activeId]="location.path()" class="nav-pills flex-column navbar-dark bg-dark"
+    orientation="vertical">
+    <li class="nav-item" [ngbNavItem]="'/' + link.routerLink" *ngFor="let link of links">
+        <a ngbNavLink [routerLink]="link.routerLink">{{link.title}}</a>
+    </li>
+</ul>

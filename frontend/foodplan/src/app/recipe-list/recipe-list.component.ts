@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RecipeService } from '../recipe.service';
+import { Recipe } from '../types/recipe';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,11 +12,11 @@ import { Observable } from 'rxjs';
 export class RecipeListComponent implements OnInit {
 
 
-  httpResponse: Observable<String>;
-  constructor(private httpClient: HttpClient) { }
+  allRecipes: Observable<Recipe[]>;
+  constructor(private httpClient: HttpClient, private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.httpResponse = this.httpClient.get('/api', {responseType: 'text'});
+    this.allRecipes = this.recipeService.getAll();
   }
 
 }

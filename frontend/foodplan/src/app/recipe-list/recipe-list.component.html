@@ -1,2 +1,21 @@
-<p>recipe-list works!</p>
-{{httpResponse | async}}
+<!--div class="ui middle aligned selection divided list">
+    <a *ngFor="let recipe of (allRecipes | async)" class="item">
+        <img class="ui medium image" *ngIf="recipe.image_path" [src]="recipe.image_path">
+        <div class="content">
+            <div class="header">{{recipe.name}}</div>
+            <div class="metadata">{{recipe.description}}</div>
+        </div>
+    </a>
+</div-->
+<div *ngFor="let recipe of (allRecipes | async)">
+    <div class="card" style="width: 18rem;">
+        <img [src]="recipe.image_path" class="card-img-top">
+        <div class="card-body">
+            <h4 class="card-title">{{ recipe.name }}</h4>
+            <p class="card-text">{{recipe.description}}</p>
+            <a [routerLink]="recipe.id" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+    <br>
+</div>

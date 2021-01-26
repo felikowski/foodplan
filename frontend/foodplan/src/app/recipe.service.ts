@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { RecipeFactory } from './shared/recipe-factory';
 import { Recipe } from './types/recipe';
+import { RecipeRaw } from './types/recipe-raw';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,6 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) { }
   getAll(): Observable<Recipe[]> {
-    let recipes: Recipe[];
     return this.httpClient.get<Recipe[]>('/api/recipes').pipe(map(res => res.map((sp): Recipe => ({
       id: sp.id,
       name: sp.name,
@@ -22,8 +23,12 @@ export class RecipeService {
       rating: sp.rating
     }))));
   }
-  get(id: number): Observable<String> {
-    return null;
+  get(id: number): Observable<Recipe> {
+    return this.httpClient.get<RecipeRaw>(
+      `/api/recipes/${id}`
+    ).pipe(
+      map(recipe => RecipeFactory.fromRaw(recipe))
+    );
   }
   delete(id: number) {
   }

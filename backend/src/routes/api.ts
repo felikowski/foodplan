@@ -14,11 +14,10 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get('/recipes/:id', async (req, res) => {
-  console.log(req.params.id);
   console.log(req.url);
   const db = new dbWrapper();
   const response : String = await db.getSingleRecipe(+req.params.id);
-  res.setHeader('content-type', 'application/json')
+  res.setHeader('content-type', 'application/json');
   res.send(response);
 })
 

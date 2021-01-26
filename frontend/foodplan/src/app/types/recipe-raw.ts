@@ -1,4 +1,4 @@
-export interface Recipe {
+export interface RecipeRaw {
     id: number;
     name: String;
     image_path: String;

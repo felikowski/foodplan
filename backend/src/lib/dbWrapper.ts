@@ -31,7 +31,8 @@ export default class dbWrapper {
     }
     async getSingleRecipe(id: number): Promise<String> {
         const query = `SELECT * FROM recipe WHERE id = ${id};`;
-        return await this.executeQuery(query);
+        const res = await this.executeQuery(query); 
+        return res[0];
     }
 }
 

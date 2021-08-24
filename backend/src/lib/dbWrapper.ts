@@ -7,7 +7,7 @@ export default class dbWrapper {
             user: 'foodplan_user',
             password: 'foodplan',
             database: 'foodplan',
-            connectionLimit: 5
+            connectionLimit: 50
         });
 
     }
@@ -21,9 +21,14 @@ export default class dbWrapper {
             console.log(err);
             throw err;
         } finally {
-            if (conn) conn.end();
-            console.log('connection closed');
-        }        
+            if (conn) {
+                conn.end().then(() => {
+                    console.log('connection closed');
+                }).catch(error => {
+                    console.log('error while closing connection');
+                });
+            }
+        }
     }
     async getAllRecipes(): Promise<String> {
         const query = "SELECT * FROM recipe";
@@ -31,7 +36,8 @@ export default class dbWrapper {
     }
     async getSingleRecipe(id: number): Promise<String> {
         const query = `SELECT * FROM recipe WHERE id = ${id};`;
-        const res = await this.executeQuery(query); 
+        const res = await this.executeQuery(query);
+        console.log(res[0]);
         return res[0];
     }
 }

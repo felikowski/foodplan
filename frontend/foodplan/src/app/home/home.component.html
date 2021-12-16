@@ -1,13 +1,3 @@
-<div *ngIf="!(auth.isLoading$ | async)">
-    <div *ngIf="auth.isAuthenticated$ | async">
-        {{(auth.user$ | async) | json}}
-        {{(auth.idTokenClaims$ | async) | json }}
-        <button (click)="auth.logout()">Logout</button>
-    </div>
-    <div *ngIf="!(auth.isAuthenticated$ | async)">
-        <button (click)="auth.loginWithPopup()">Log in</button>
-    </div>
-</div>
 <ngb-carousel>
     <ng-template ngbSlide>
         <div class="picsum-img-wrapper">

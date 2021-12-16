@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthModule } from '@auth0/auth0-angular'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
@@ -58,24 +57,7 @@ const routes = [
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-    NgbModule,
-    AuthModule.forRoot({
-      domain: 'dev-cmwnq-gx.us.auth0.com',
-      clientId: '7aNMr0cBSf44sDCR3MAi2jiLgMdK1qtL',
-      audience: 'test',
-      scope: 'read:current_user',
-      httpInterceptor: {
-        allowedList: [
-          {
-            uri: 'http://localhost:3000',
-            tokenOptions: {
-              audience: 'test',
-              scope: 'test'
-            }
-          }
-        ]
-      }
-    })
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

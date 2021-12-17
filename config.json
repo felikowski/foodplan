@@ -5,5 +5,9 @@
         "username": "foodplan_user",
         "password": "foodplan",
         "database": "foodplan"
+    },
+    "database_webserver": {
+        "url": "http://localhost",
+        "port": 4000
     }
 }

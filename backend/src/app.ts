@@ -18,5 +18,5 @@ app.use('*', (req, res) => {
   });
 
 app.listen(port, () => {
-    return console.log(`server is listening on ${port}`);
+    return console.log(`API server is listening on ${port}`);
 });

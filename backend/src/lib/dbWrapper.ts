@@ -1,10 +1,13 @@
 import got from 'got';
 import { ILogObject, Logger } from 'tslog';
+
+const config = require('../../../../config.json');
 export class dbWrapper {
+    private static databaseUrl = `${config.database_webserver.url}:${config.database_webserver.url}`;
     static async getAllRecipes(): Promise<String> {
         console.log('getAllRecipesViaWebService');
         try {
-            const response = await got('http://localhost:4000/recipe');
+            const response = await got(`${this.databaseUrl}/recipe`);
             console.log(response.body);
             return response.body;
         } catch (error) {
@@ -17,7 +20,7 @@ export class dbWrapper {
     
     static async getSingleRecipe(id: number): Promise<String> {
         try {
-            const response = await got.get(`http://localhost:4000/recipe/${id}`);
+            const response = await got.get(`${this.databaseUrl}/recipe/${id}`);
             console.log(response.body);
             return response.body;
         } catch {
@@ -33,7 +36,7 @@ export class dbWrapper {
             message: logObject.argumentsArray,
             codeline: `${logObject.fullFilePath} ${logObject.functionName} ${logObject.columnNumber}` 
         };
-        const response = await got.post('http://localhost:4000/log', { json: dbLog}).json();
+        const response = await got.post(`${this.databaseUrl}/log`, { json: dbLog}).json();
     }
 }
 

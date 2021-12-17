@@ -13,6 +13,7 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) { }
   getAll(): Observable<Recipe[]> {
+    console.log('send request');
     return this.httpClient.get<Recipe[]>('/api/recipes').pipe(map(res => res.map((sp): Recipe => ({
       id: sp.id,
       name: sp.name,

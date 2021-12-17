@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = 3000;
 app.use( express.static(path.join(__dirname, '../../frontend/dist')));
-
+app.use('/api', api);
 app.use('*', (req, res) => {
     const indexPath = path.join(__dirname, '../../frontend/dist/index.html');
     console.log(indexPath);
@@ -20,8 +20,3 @@ app.use('*', (req, res) => {
 app.listen(port, () => {
     return console.log(`server is listening on ${port}`);
 });
-
-
-
-
-

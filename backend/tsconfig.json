@@ -2,10 +2,12 @@
     "compilerOptions": {
       "module": "commonjs",
       "esModuleInterop": true,
-      "target": "es6",
+      "target": "es2020",
       "moduleResolution": "node",
       "sourceMap": true,
       "outDir": "../build/backend/dist"
     },
-    "lib": ["es2015"]
+    "include": ["**/*", "package.json"],
+    "exclude": ["node_modules", "docs", "dist"],
+    "lib": ["es2020", "dom"]
   }

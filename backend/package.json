@@ -4,13 +4,12 @@
   "description": "backend for foodplan app",
   "main": "dist/app.js",
   "scripts": {
-    "start": "rimraf ../build/frontend/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
-    "start-node": "xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" -n node,ts,ng -c yellow,blue,red -k",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev-all": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
-    "start-dev-node": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
-    "start-dev-ng": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" \"cd ../frontend/foodplan/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress\" -n node,ts,ng -c yellow,blue,red -k",
-    "dev:debug": "xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon --inspect ../build/backend/dist/app.js\" \"cd ../frontend/foodplan && ng build --watch\""
+    "start-dev-node": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" -n node,ts,ng -c yellow,blue,red -k",
+    "start-dev-ng": "cd ../frontend/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress",
+    "start-dev-database": "cd ../database && rimraf ../dist && concurrently \"tsc --watch\" \"nodemon ../dist/src/index.js\" -n node,ts,ng -c yellow,blue,red -k",
+    "start-dev-all": "concurrently \"npm run start-dev-node\" \"npm run start-dev-ng\" \"npm run start-dev-database\" -n node,ts,ng -c yellow,blue,red -k",
+    "dev:debug": "xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon --inspect ../build/backend/dist/app.js\" \"cd ../frontend && ng build --watch\""
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +19,6 @@
     "typescript": "^4.4.2"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "express-openid-connect": "^2.5.1",

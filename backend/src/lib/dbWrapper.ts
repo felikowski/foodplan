@@ -3,7 +3,7 @@ import { ILogObject, Logger } from 'tslog';
 
 const config = require('../../../../config.json');
 export class dbWrapper {
-    private static databaseUrl = `${config.database_webserver.url}:${config.database_webserver.url}`;
+    private static databaseUrl = `${config.database_webserver.url}:${config.database_webserver.port}`;
     static async getAllRecipes(): Promise<String> {
         console.log('getAllRecipesViaWebService');
         try {

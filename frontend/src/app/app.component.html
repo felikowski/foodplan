@@ -1,10 +1,18 @@
-<div class="marginclass">
-  <div class="row">
-    <div class="col-5>">
-      <app-menu></app-menu>
-    </div>
-    <div class="col-7">
-      <router-outlet></router-outlet>
-    </div>
+<div id="app" class="d-flex flex-cloumn h-100">
+  <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+    <app-loading></app-loading>
   </div>
+  <ng-template #loaded>
+    <div class="marginclass">
+      <div class="row">
+        <div class="col-5>">
+          <app-nav-bar></app-nav-bar>
+          <app-menu></app-menu>
+        </div>
+        <div class="col-7">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>

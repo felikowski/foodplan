@@ -11,7 +11,6 @@ export class Log {
     }
     public static initialize() {
         const logToDb = function (logObject: ILogObject) {
-            console.log('transport');
             dbWrapper.sendToLog(logObject);
         }
         Log.log = new Logger({ name: "logger" });

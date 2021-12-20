@@ -13,7 +13,8 @@ export class MenuComponent implements OnInit {
     { title: 'Home', routerLink: 'home' },
     { title: 'Rezepte', routerLink: 'recipelist' },
     { title: 'Zutaten', routerLink: 'ingredientslist'},
-    { title: 'Planer', routerLink: 'planner'}
+    { title: 'Planer', routerLink: 'planner'},
+    { title: 'Profil', routerLink: 'profile'}
   ];
   ngOnInit(): void {
   }

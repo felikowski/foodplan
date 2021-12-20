@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
   res.send('api works');
 });
 router.get('/recipes', async (req, res) => {
+  console.log('headers: ' + JSON.stringify(req.headers));
   const response: String = await dbWrapper.getAllRecipes();
   res.setHeader('content-type', 'application/json')
   res.send(response);

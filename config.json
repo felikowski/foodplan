@@ -9,5 +9,14 @@
     "database_webserver": {
         "url": "http://localhost",
         "port": 4000
+    },
+    "api_webserver": {
+        "url": "http://localhost",
+        "port": 3000
+    },
+    "auth0": {
+        "domain": "dev-cmwnq-gx.us.auth0.com",
+        "clientId": "7aNMr0cBSf44sDCR3MAi2jiLgMdK1qtL",
+        "audience": "http://localhost:3000/api"
     }
 }

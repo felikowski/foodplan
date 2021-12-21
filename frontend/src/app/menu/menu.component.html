@@ -1,6 +1,32 @@
-<ul ngbNav #nav="ngbNav" [activeId]="location.path()" class="nav-pills flex-column navbar-dark bg-dark"
-    orientation="vertical">
-    <li class="nav-item" [ngbNavItem]="'/' + link.routerLink" *ngFor="let link of links">
-        <a ngbNavLink [routerLink]="link.routerLink">{{link.title}}</a>
-    </li>
-</ul>
+<nav class="navbar navbar-expand-md light fixed-top navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Foodplanner</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul ngbNav #nav="ngbNav" [activeId]="location.path()" class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item" [ngbNavItem]="'/' + link.routerLink" *ngFor="let link of links">
+                    <a ngbNavLink [routerLink]="link.routerLink">{{link.title}}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Einstellungen</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <div *ngIf="(auth.isAuthenticated$ | async) === false">
+                            <li><app-login-button class="dropdown-item"></app-login-button></li>
+                            <li><app-signup-button class="dropdown-item"></app-signup-button></li>
+                        </div>
+                        <div  *ngIf="auth.isAuthenticated$ | async">
+                            <li><app-logout-button class="dropdown-item"></app-logout-button></li>
+                        </div>
+                    </ul>
+                  </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control " type="search" placeholder="Suche" aria-label="Suche">
+                <button class="btn btn-outline-light me-2" (click)="search()">Suche</button>
+            </form>
+        </div>
+    </div>
+</nav>

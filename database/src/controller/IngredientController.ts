@@ -1,58 +1,52 @@
 import * as express from 'express';
 import {Router} from 'express';
 import {getManager} from "typeorm";
-import {Recipe} from "../entity/Recipe";
+import {Ingredient} from "../entity/Ingredient";
 
 const router: Router = express.Router();
 router.get('/', async (request, response, next) => {
-    console.log('request for all recipes came in!');
-    const recipeRepository = getManager().getRepository(Recipe);
-
-    const recipes = await recipeRepository.find();
-
+    const ingredientRepository = getManager().getRepository(Ingredient);
+    const recipes = await ingredientRepository.find();
     response.send(recipes);
 });
 router.get('/:id', async (request, response, next) => {
-    console.log(`request for recipe with id ${request.params.id} came in`);
-    const recipeRepository = getManager().getRepository(Recipe);
-
-    const post = await recipeRepository.findOne(request.params.id);
+    const ingredientRepository = getManager().getRepository(Ingredient);
+    const post = await ingredientRepository.findOne(request.params.id);
 
     if (!post) {
         response.status(404);
         response.end();
         return;
     }
-
     response.send(post);
 });
 router.delete('/:id', async (request, response, next) => {
-    const recipeRepository = getManager().getRepository(Recipe);
-    const recipe = await recipeRepository.findOne(request.params.id);
+    const ingredientRepository = getManager().getRepository(Ingredient);
+    const recipe = await ingredientRepository.findOne(request.params.id);
 
     if (!recipe) {
         response.status(404);
         response.end();
         return;
     }
-    recipeRepository.remove(recipe);
+    ingredientRepository.remove(recipe);
     response.status(200);
     response.send(recipe);
 });
 
 router.post('/', async (request, response, next) => {
     try {
-        const repo = getManager().getRepository(Recipe);
+        const repo = getManager().getRepository(Ingredient);
         const insert = await repo.
             createQueryBuilder().
             insert().
-            into(Recipe).
+            into(Ingredient).
             values({
                 name: request.body.name,
-                imagePath: request.body.imagePath,
                 description: request.body.description,
-                instructions: request.body.instructions,
-                rating: request.body.rating,
+                standardUnitId: request.body.standardUnitId,
+                imagePath: request.body.imagePath,
+                usualDurability: request.body.usualDurability,
             }).
             execute();
         response.status(200);
@@ -64,18 +58,18 @@ router.post('/', async (request, response, next) => {
 });
 
 router.post('/:id', async (request, response, next) => {
-    // TODO lookup ob es die Rezept bereits gibt
+    // TODO lookup ob es die Zutat bereits gibt
     try {
-        const repo = getManager().getRepository(Recipe);
+        const repo = getManager().getRepository(Ingredient);
         const update = await repo.
             createQueryBuilder().
             update().
             set({
                 name: request.body.name,
-                imagePath: request.body.imagePath,
                 description: request.body.description,
-                instructions: request.body.instructions,  
-                rating: request.body.rating,
+                standardUnitId: request.body.standardUnitId, //TODO herausfinden, wie man das direkt per relation machen kann 
+                imagePath: request.body.imagePath,
+                usualDurability: request.body.usualDurability,
             }).
             where("id = :id", { id: request.params.id}).
             execute();
@@ -86,4 +80,4 @@ router.post('/:id', async (request, response, next) => {
         response.send(error);
     }
 });
-export {router as RecipeController};
+export {router as IngredientController};

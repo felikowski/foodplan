@@ -3,6 +3,8 @@
       "module": "commonjs",
       "esModuleInterop": true,
       "target": "es2020",
+      "resolveJsonModule": true,
+      "allowSyntheticDefaultImports": true,
       "moduleResolution": "node",
       "sourceMap": true,
       "outDir": "../build/backend/dist"

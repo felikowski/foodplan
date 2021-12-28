@@ -1,4 +1,5 @@
 import {RecipeController} from "./controller/RecipeController";
+import {IngredientController} from "./controller/IngredientController";
 import {LogController} from "./controller/LogController";
 import {Router} from 'express';
 interface Route {
@@ -8,10 +9,14 @@ interface Route {
 export const AppRoutes = [
     {
         route: '/recipe',
-        class: RecipeController
+        class: RecipeController,
     },
     {
         route: '/log',
-        class: LogController
-    }   
+        class: LogController,
+    },
+    {
+        route: '/ingredient',
+        class: IngredientController,
+    },
 ];

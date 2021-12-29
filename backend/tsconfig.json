@@ -7,7 +7,8 @@
       "allowSyntheticDefaultImports": true,
       "moduleResolution": "node",
       "sourceMap": true,
-      "outDir": "../build/backend/dist"
+      "outDir": "../build/backend/dist",
+      "rootDir": "./"
     },
     "include": ["**/*", "package.json"],
     "exclude": ["node_modules", "docs", "dist"],

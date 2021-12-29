@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev-node": "rimraf ../build/dist && xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/app.js\" -n node,ts,ng -c yellow,blue,red -k",
+    "start-dev-node": "xcopy node_modules ..\\build\\backend\\dist\\node_modules /s /e /I /y && concurrently \"tsc --watch\" \"nodemon ../build/backend/dist/src/app.js\" -n node,ts,ng -c yellow,blue,red -k",
     "start-dev-ng": "cd ../frontend/ && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --watch=true --progress",
     "start-dev-database": "cd ../database && rimraf ../dist && concurrently \"tsc --watch\" \"nodemon ../dist/src/index.js\" -n node,ts,ng -c yellow,blue,red -k",
     "start-dev-all": "concurrently \"npm run start-dev-node\" \"npm run start-dev-ng\" \"npm run start-dev-database\" -n node,ts,ng -c yellow,blue,red -k",

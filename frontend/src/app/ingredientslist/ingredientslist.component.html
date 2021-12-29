@@ -1,1 +1,14 @@
-<p>ingredientslist works!</p>
+<div>
+    <a routerLink="/add-ingredient"><button type="button" class="btn btn-secondary">Zutat hinzufügen</button></a>
+</div>
+<div *ngFor="let ingredient of (allIngredients | async)">
+    <div class="card" style="width: 18rem;">
+        <img [src]="ingredient.imagePath" class="card-img-top">
+        <div class="card-body">
+            <h4 class="card-title">{{ ingredient.name }}</h4>
+            <p class="card-text">{{ingredient.description}}</p>
+            <a [routerLink]="ingredient.id" class="card-link">Details</a>
+        </div>
+    </div>
+    <br>
+</div>

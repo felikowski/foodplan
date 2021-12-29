@@ -50,7 +50,7 @@ router.post('/', async (request, response, next) => {
             }).
             execute();
         response.status(200);
-        response.send();
+        response.send(insert.raw);
     } catch (error) {
         response.status(401);
         response.send(error);

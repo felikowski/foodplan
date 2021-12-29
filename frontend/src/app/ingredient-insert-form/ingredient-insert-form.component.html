@@ -1,0 +1,28 @@
+<form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name: </label>
+        <div class="col-sm-10">
+            <input class="form-control col-sm-10" id="name" type="text" formControlName="name" placeholder="Name">
+        </div>
+        <label for="description" class="col-sm-2 col-form-label">Beschreibung: </label>
+        <div class="col-sm-10">
+            <input class="form-control col-sm-10" id="description" type="text" formControlName="description" placeholder="Beschreibung">
+        </div>
+        <label for="standardUnitId" class="col-sm-2 col-form-label">Einheit: </label>
+        <div class="col-sm-10">
+            <select class="form-control col-sm-10" [value]="" formControlName="standardUnitId" (change)="changeUnit($event)" aria-placeholder="Einheit">
+                <option selected disabled hidden value="">Einheit wählen</option>
+                <option *ngFor="let unit of units" value={{unit.id}}>{{unit.name}}</option>
+            </select>
+        </div>
+        <label for="imagePath" class="col-sm-2 col-form-label">Bild: </label>
+        <div class="col-sm-10">
+            <input class="form-control col-sm-10" id="imagePath" type="text" formControlName="imagePath" placeholder="Bild">
+        </div>
+        <label for="usualDurability" class="col-sm-2 col-form-label">Haltbarkeit (in Tagen): </label>
+        <div class="col-sm-10">
+            <input class="form-control col-sm-10" id="usualDurability" type="number" formControlName="usualDurability" placeholder="Haltbarkeit">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-secondary col-sm-1" [disabled]="!ingredientForm.valid">Erstellen</button>
+</form>

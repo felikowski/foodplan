@@ -23,6 +23,9 @@ import { LoadingComponent } from './loading/loading.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { IngredientInsertFormComponent } from './ingredient-insert-form/ingredient-insert-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 const routes = [
   {
     path: '',
@@ -45,6 +48,14 @@ const routes = [
   {
     path: 'ingredientslist',
     component: IngredientslistComponent
+  },
+  {
+    path: 'add-ingredient',
+    component: IngredientInsertFormComponent
+  },
+  {
+    path: 'ingredientslist/:id',
+    component: IngredientDetailsComponent
   },
   {
     path: 'planner',
@@ -74,12 +85,15 @@ const routes = [
     AuthNavComponent,
     NavBarComponent,
     LoadingComponent,
-    ProfileComponent
+    ProfileComponent,
+    IngredientInsertFormComponent,
+    IngredientDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     NgbModule,
     AuthModule.forRoot({

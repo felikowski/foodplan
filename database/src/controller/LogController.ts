@@ -15,8 +15,6 @@ router.get('/:id', async (request, response, next) => {
 
 router.post('/', async (request, response, next) => {
     try {
-        console.log('Post for Log came in');
-        console.log(request.body);
         const repo = getManager().getRepository(Log);
         const insert = await repo.
             createQueryBuilder().

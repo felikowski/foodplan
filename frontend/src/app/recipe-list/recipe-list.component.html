@@ -1,12 +1,3 @@
-<!--div class="ui middle aligned selection divided list">
-    <a *ngFor="let recipe of (allRecipes | async)" class="item">
-        <img class="ui medium image" *ngIf="recipe.imagePath" [src]="recipe.imagePath">
-        <div class="content">
-            <div class="header">{{recipe.name}}</div>
-            <div class="metadata">{{recipe.description}}</div>
-        </div>
-    </a>
-</div-->
 <div *ngFor="let recipe of (allRecipes | async)">
     <div class="card" style="width: 18rem;">
         <img [src]="recipe.imagePath" class="card-img-top">

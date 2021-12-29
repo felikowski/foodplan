@@ -1,6 +1,6 @@
 import got from 'got';
 import { Log }from './Log';
-import config from '../../../config.json';
+import config from '../../config.json';
 
 const urlPath = `${config.database_webserver.url}:${config.database_webserver.port}`;
 const apiPath = `recipe`;

@@ -5,7 +5,6 @@ import {Recipe} from "../entity/Recipe";
 
 const router: Router = express.Router();
 router.get('/', async (request, response, next) => {
-    console.log('request for all recipes came in!');
     const recipeRepository = getManager().getRepository(Recipe);
 
     const recipes = await recipeRepository.find();
@@ -13,7 +12,6 @@ router.get('/', async (request, response, next) => {
     response.send(recipes);
 });
 router.get('/:id', async (request, response, next) => {
-    console.log(`request for recipe with id ${request.params.id} came in`);
     const recipeRepository = getManager().getRepository(Recipe);
 
     const post = await recipeRepository.findOne(request.params.id);

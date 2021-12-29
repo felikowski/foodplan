@@ -1,6 +1,6 @@
 import got from 'got';
 import { Log }from './Log';
-import config from '../../../config.json';
+import config from '../../config.json';
 export class Ingredient {
     static async getAllIngredients(): Promise<String> {
         try {
@@ -32,6 +32,7 @@ export class Ingredient {
     static async insertIngredient(body: String): Promise<String> {
         try {
             const response = await got.post(`${config.database_webserver.url}:${config.database_webserver.port}/ingredient`, { json: body });
+            response.statusCode = 200;
             return response.body;
         } catch (error) {
             Log.getLog().error(error);

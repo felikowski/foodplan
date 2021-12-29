@@ -11,8 +11,11 @@ import { Recipe } from '../types/recipe';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  constructor(public route: ActivatedRoute, private recipeService: RecipeService) { }
   recipe: Observable<Recipe>;
+  json: JSON
+  constructor(public route: ActivatedRoute, private recipeService: RecipeService) { 
+    this.json = JSON;
+  }
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.recipe = this.recipeService.get(id);

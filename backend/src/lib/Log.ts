@@ -1,5 +1,5 @@
 import { ILogObject, Logger } from 'tslog';
-import config from '../../../config.json';
+import config from '../../config.json';
 import got from 'got';
 export class Log {
     private static log: Logger

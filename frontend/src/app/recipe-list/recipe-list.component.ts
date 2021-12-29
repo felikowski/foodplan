@@ -11,7 +11,6 @@ import { Recipe } from '../types/recipe';
 })
 export class RecipeListComponent implements OnInit {
 
-
   allRecipes: Observable<Recipe[]>;
   constructor(private httpClient: HttpClient, private recipeService: RecipeService) { }
 

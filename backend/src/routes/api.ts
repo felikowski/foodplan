@@ -1,6 +1,7 @@
 import express from 'express';
 import { Recipe } from '../lib/Recipe';
 import { Log }from '../lib/Log';
+import { Ingredient } from '../lib/Ingredient';
 
 const router = express.Router();
 router.use((req, res, next) => {
@@ -38,6 +39,36 @@ router.post('/recipes/', async (req, res) => {
 
 router.post('/recipes/:id', async (req, res) => {
   const response: String = await Recipe.updateRecipe(+req.params.id, req.body);
+  res.setHeader('content-type', 'application/json');
+  res.send(response);
+});
+
+router.get('/ingredients', async (req, res) => {
+  const response: String = await Ingredient.getAllIngredients();
+  res.setHeader('content-type', 'application/json')
+  res.send(response);
+});
+
+router.get('/ingredients/:id', async (req, res) => {
+  const response: String = await Ingredient.getSingleIngredient(+req.params.id);
+  res.setHeader('content-type', 'application/json');
+  res.send(response);
+});
+
+router.delete('/ingredients/:id', async (req, res) => {
+  const response: String = await Ingredient.deleteSingleIngredient(+req.params.id);
+  res.setHeader('content-type', 'application/json');
+  res.send(response);
+});
+
+router.post('/ingredients', async (req, res) => {
+  const response: String = await Ingredient.insertIngredient(req.body);
+  res.setHeader('content-type', 'application/json');
+  res.send(response);
+});
+
+router.post('/ingredients/:id', async (req, res) => {
+  const response: String = await Ingredient.updateIngredient(+req.params.id, req.body);
   res.setHeader('content-type', 'application/json');
   res.send(response);
 });

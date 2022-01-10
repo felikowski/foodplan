@@ -21,10 +21,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = 3000;
-app.use(express.static(path.join(__dirname, '../../../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../../build/frontend/dist')));
 app.use('/api', jwtCheck, api);
 app.use('*', (req, res) => {
-    const indexPath = path.join(__dirname, '../../../frontend/dist/index.html');
+    const indexPath = path.join(__dirname, '../../build/frontend/dist/index.html');
     res.sendFile(indexPath);
   });
 

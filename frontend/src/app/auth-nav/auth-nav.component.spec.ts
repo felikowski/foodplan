@@ -1,4 +1,7 @@
+import { InjectionToken } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthService } from '@auth0/auth0-angular';
+import { AuthenticationButtonComponent } from '../authentication-button/authentication-button.component';
 
 import { AuthNavComponent } from './auth-nav.component';
 
@@ -8,7 +11,8 @@ describe('AuthNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthNavComponent ]
+      declarations: [ AuthNavComponent, AuthenticationButtonComponent ],
+      providers: [ {provide: AuthService, useValue: {InjectionToken: jest.fn()}} ]
     })
     .compileComponents();
   });

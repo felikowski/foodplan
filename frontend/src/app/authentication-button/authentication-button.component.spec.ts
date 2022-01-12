@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthService } from '@auth0/auth0-angular';
 
 import { AuthenticationButtonComponent } from './authentication-button.component';
 
@@ -8,7 +9,8 @@ describe('AuthenticationButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthenticationButtonComponent ]
+      declarations: [ AuthenticationButtonComponent ],
+      providers: [{provide: AuthService, useValue: {InjectionToken: jest.fn()}}],
     })
     .compileComponents();
   });

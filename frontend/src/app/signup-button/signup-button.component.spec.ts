@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthService } from '@auth0/auth0-angular';
 
 import { SignupButtonComponent } from './signup-button.component';
 
@@ -8,7 +9,10 @@ describe('SignupButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignupButtonComponent ]
+      declarations: [ SignupButtonComponent ],
+      providers: [ { provide: AuthService, useValue: {
+        loginWithRedirect: jest.fn()
+      } }],
     })
     .compileComponents();
   });

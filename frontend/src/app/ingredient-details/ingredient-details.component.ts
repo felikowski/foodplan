@@ -7,16 +7,17 @@ import { Ingredient } from '../types/Ingredient';
 @Component({
   selector: 'app-ingredient-details',
   templateUrl: './ingredient-details.component.html',
-  styleUrls: ['./ingredient-details.component.scss']
+  styleUrls: ['./ingredient-details.component.scss'],
 })
 export class IngredientDetailsComponent implements OnInit {
-
   ingredient: Observable<Ingredient>;
-  json: JSON
-  
-  constructor(public route: ActivatedRoute, private ingredientService: IngredientService) { 
+
+  json: JSON;
+
+  constructor(public route: ActivatedRoute, private ingredientService: IngredientService) {
     this.json = JSON;
   }
+
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.ingredient = this.ingredientService.get(id);

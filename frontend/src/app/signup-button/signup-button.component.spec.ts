@@ -9,12 +9,16 @@ describe('SignupButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignupButtonComponent ],
-      providers: [ { provide: AuthService, useValue: {
-        loginWithRedirect: jest.fn()
-      } }],
-    })
-    .compileComponents();
+      declarations: [SignupButtonComponent],
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            loginWithRedirect: jest.fn(),
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

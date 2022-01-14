@@ -1,9 +1,9 @@
 export interface Recipe {
-    id: number;
-    name: String;
-    imagePath: String;
-    description: String;
-    ingredients: String;
-    instructions: String;
-    rating: number;
+  id: number;
+  name: string;
+  imagePath: string;
+  description: string;
+  ingredients: string;
+  instructions: string;
+  rating: number;
 }

@@ -10,10 +10,9 @@ describe('NavBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavBarComponent, AuthNavComponent, AuthenticationButtonComponent ],
-      providers: [ { provide: AuthService, useValue: {InjectionToken: jest.fn()} } ],
-    })
-    .compileComponents();
+      declarations: [NavBarComponent, AuthNavComponent, AuthenticationButtonComponent],
+      providers: [{ provide: AuthService, useValue: { InjectionToken: jest.fn() } }],
+    }).compileComponents();
   });
 
   beforeEach(() => {

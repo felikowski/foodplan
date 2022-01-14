@@ -10,10 +10,9 @@ describe('RecipeDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecipeDetailsComponent ],
-      imports: [ RouterTestingModule, HttpClientTestingModule ],
-    })
-    .compileComponents();
+      declarations: [RecipeDetailsComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

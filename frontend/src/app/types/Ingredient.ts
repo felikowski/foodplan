@@ -1,8 +1,8 @@
 export interface Ingredient {
-    id: number;
-    name: String;
-    description: String;
-    standardUnit: String;
-    imagePath: String;
-    usualDurability: number;
+  id: number;
+  name: string;
+  description: string;
+  standardUnit: string;
+  imagePath: string;
+  usualDurability: number;
 }

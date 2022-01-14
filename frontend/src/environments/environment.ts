@@ -1,4 +1,5 @@
 import config from '../../../config.json';
+
 export const environment = {
   production: false,
   auth: {
@@ -9,6 +10,6 @@ export const environment = {
   },
   api_server: {
     url: config.api_webserver.url,
-    port: config.api_webserver.port
-  }
+    port: config.api_webserver.port,
+  },
 };

@@ -11,11 +11,10 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, NgbNavModule ],
-      declarations: [ MenuComponent ],
-      providers: [ RouterTestingModule, { provide: AuthService, useValue: { InjectionToken: jest.fn() } } ],
-    })
-    .compileComponents();
+      imports: [RouterTestingModule, NgbNavModule],
+      declarations: [MenuComponent],
+      providers: [RouterTestingModule, { provide: AuthService, useValue: { InjectionToken: jest.fn() } }],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -3,14 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-auth-nav',
   templateUrl: './auth-nav.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class AuthNavComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

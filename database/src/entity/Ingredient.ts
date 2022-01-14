@@ -1,28 +1,28 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
-import { RecipeIngredients } from "./RecipeIngredients";
+import {
+  Entity, PrimaryGeneratedColumn, Column, OneToMany,
+} from 'typeorm';
+import { RecipeIngredients } from './RecipeIngredients';
 
 @Entity()
 export class Ingredient {
-
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+  @Column()
     name: string;
 
-    @Column()
+  @Column()
     description: string;
 
-    @Column()
+  @Column()
     usualDurability: number; // days
 
-    @Column()
+  @Column()
     standardUnitId: number;
 
-    @Column()
+  @Column()
     imagePath: string;
 
-    @OneToMany(() => RecipeIngredients, recipeIngredients => recipeIngredients.ingredient)
+  @OneToMany(() => RecipeIngredients, (recipeIngredients) => recipeIngredients.ingredient)
     recipeIngredients!: RecipeIngredients[];
-
 }

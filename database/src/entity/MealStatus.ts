@@ -1,19 +1,19 @@
-import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToOne, OneToMany} from "typeorm";
-import { Meal } from "./Meal";
-import { Plan } from "./Plan";
+import {
+  Entity, PrimaryGeneratedColumn, Column, OneToMany,
+} from 'typeorm';
+import { Meal } from './Meal';
 
 @Entity()
 export class MealStatus {
-
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    name: String;
+  @Column()
+    name: string;
 
-    @Column()
-    description: String;
+  @Column()
+    description: string;
 
-    @OneToMany(() => Meal, meal => meal.mealStatus)
-    meals: Meal[]; 
+  @OneToMany(() => Meal, (meal) => meal.mealStatus)
+    meals: Meal[];
 }

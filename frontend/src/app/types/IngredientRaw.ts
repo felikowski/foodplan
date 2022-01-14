@@ -1,8 +1,8 @@
 export interface IngredientRaw {
-    id: number;
-    name: String;
-    description: String;
-    standardUnitId: String;
-    imagePath: String;
-    usualDurability: number;
+  id: number;
+  name: string;
+  description: string;
+  standardUnitId: string;
+  imagePath: string;
+  usualDurability: number;
 }

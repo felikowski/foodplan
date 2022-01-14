@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard, AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { IngredientslistComponent } from './ingredientslist/ingredientslist.component';
 import { PlannerComponent } from './planner/planner.component';
 import { MenuComponent } from './menu/menu.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { environment as env} from '../environments/environment';
-import {AuthGuard, AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
 import { LoginButtonComponent } from './login-button/login-button.component';
 import { SignupButtonComponent } from './signup-button/signup-button.component';
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
@@ -21,52 +22,48 @@ import { AuthNavComponent } from './auth-nav/auth-nav.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { IngredientInsertFormComponent } from './ingredient-insert-form/ingredient-insert-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+
 const routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
-
+    pathMatch: 'full',
   },
   {
     path: 'recipelist',
-    component: RecipeListComponent
+    component: RecipeListComponent,
   },
   {
     path: 'recipelist/:id',
-    component: RecipeDetailsComponent
+    component: RecipeDetailsComponent,
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'ingredientslist',
-    component: IngredientslistComponent
+    component: IngredientslistComponent,
   },
   {
     path: 'add-ingredient',
-    component: IngredientInsertFormComponent
+    component: IngredientInsertFormComponent,
   },
   {
     path: 'ingredientslist/:id',
-    component: IngredientDetailsComponent
+    component: IngredientDetailsComponent,
   },
   {
     path: 'planner',
-    component: PlannerComponent
+    component: PlannerComponent,
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
-  }
-
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
@@ -87,7 +84,7 @@ const routes = [
     LoadingComponent,
     ProfileComponent,
     IngredientInsertFormComponent,
-    IngredientDetailsComponent
+    IngredientDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,15 +96,17 @@ const routes = [
     AuthModule.forRoot({
       ...env.auth,
       httpInterceptor: {
-        allowedList: [`*`]
-      }
+        allowedList: ['*'],
+      },
     }),
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthHttpInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

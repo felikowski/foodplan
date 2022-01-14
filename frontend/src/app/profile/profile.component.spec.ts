@@ -10,10 +10,14 @@ describe('ProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ],
-      providers: [{provide: AuthService, useValue: {InjectionToken: jest.fn(), user$: of('user')}}]
-    })
-    .compileComponents();
+      declarations: [ProfileComponent],
+      providers: [
+        {
+          provide: AuthService,
+          useValue: { InjectionToken: jest.fn(), user$: of('user') },
+        },
+      ],
+    }).compileComponents();
   });
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfileComponent);

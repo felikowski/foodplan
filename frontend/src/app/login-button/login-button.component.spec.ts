@@ -10,11 +10,10 @@ describe('LoginButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginButtonComponent ],
-      imports: [ HttpClientTestingModule ],
-      providers: [{provide: AuthService, useValue: {InjectionToken: jest.fn()}}],
-    })
-    .compileComponents();
+      declarations: [LoginButtonComponent],
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: AuthService, useValue: { InjectionToken: jest.fn() } }],
+    }).compileComponents();
   });
 
   beforeEach(() => {

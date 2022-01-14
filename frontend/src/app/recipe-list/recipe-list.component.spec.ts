@@ -10,11 +10,10 @@ describe('RecipeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecipeListComponent ],
-      imports: [ HttpClientTestingModule ],
-      providers: [ {provide: AuthService, useValue: {InjectionToken: jest.fn()}}],
-    })
-    .compileComponents();
+      declarations: [RecipeListComponent],
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: AuthService, useValue: { InjectionToken: jest.fn() } }],
+    }).compileComponents();
   });
 
   beforeEach(() => {

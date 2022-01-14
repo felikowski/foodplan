@@ -9,10 +9,9 @@ describe('LogoutButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoutButtonComponent ],
-      providers: [{provide: AuthService, useValue: {InjectionToken: jest.fn()}}]
-    })
-    .compileComponents();
+      declarations: [LogoutButtonComponent],
+      providers: [{ provide: AuthService, useValue: { InjectionToken: jest.fn() } }],
+    }).compileComponents();
   });
 
   beforeEach(() => {

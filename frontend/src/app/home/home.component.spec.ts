@@ -11,10 +11,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent, NgbCarousel, AuthNavComponent ],
-      providers: [ AuthService ]
-    })
-    .compileComponents();
+      declarations: [HomeComponent, NgbCarousel, AuthNavComponent],
+      providers: [AuthService],
+    }).compileComponents();
   });
 
   beforeEach(() => {

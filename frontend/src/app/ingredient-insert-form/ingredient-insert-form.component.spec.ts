@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IngredientInsertFormComponent } from './ingredient-insert-form.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IngredientInsertFormComponent } from './ingredient-insert-form.component';
+
 describe('IngredientInsertFormComponent', () => {
   let component: IngredientInsertFormComponent;
   let fixture: ComponentFixture<IngredientInsertFormComponent>;
@@ -10,10 +11,9 @@ describe('IngredientInsertFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, ReactiveFormsModule, FormsModule],
-      declarations: [ IngredientInsertFormComponent ],
-      providers: [FormBuilder]
-    })
-    .compileComponents();
+      declarations: [IngredientInsertFormComponent],
+      providers: [FormBuilder],
+    }).compileComponents();
   });
 
   beforeEach(() => {

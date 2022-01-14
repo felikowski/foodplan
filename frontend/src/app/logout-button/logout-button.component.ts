@@ -5,18 +5,14 @@ import { AuthService } from '@auth0/auth0-angular';
 @Component({
   selector: 'app-logout-button',
   templateUrl: './logout-button.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class LogoutButtonComponent implements OnInit {
+  constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document) {}
 
-  constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logout(): void {
     this.auth.logout({ returnTo: this.doc.location.origin });
   }
-
 }

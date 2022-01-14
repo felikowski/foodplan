@@ -45,6 +45,7 @@
     "@typescript-eslint/no-explicit-any": "error",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "import/no-cycle": "off"
+    "import/no-cycle": "off",
+    "linebreak-style": "off"
   }
 }

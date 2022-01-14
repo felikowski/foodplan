@@ -1,30 +1,31 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from "typeorm";
-import { MealStatus } from "./MealStatus";
-import { MealType } from "./MealType";
-import { Plan } from "./Plan";
-import { Recipe } from "./Recipe";
+import {
+  Entity, PrimaryGeneratedColumn, Column, ManyToOne,
+} from 'typeorm';
+import { MealStatus } from './MealStatus';
+import { MealType } from './MealType';
+import { Plan } from './Plan';
+import { Recipe } from './Recipe';
 
 @Entity()
 export class Meal {
-
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Plan, plan => plan.meals)
+  @ManyToOne(() => Plan, (plan) => plan.meals)
     plan: Date;
 
-    @Column()
+  @Column()
     date: Date;
 
-    @ManyToOne(() => Recipe, recipe => recipe.meals)
+  @ManyToOne(() => Recipe, (recipe) => recipe.meals)
     recipe: number;
 
-    @ManyToOne(() => MealType, mealType => mealType.id)
+  @ManyToOne(() => MealType, (mealType) => mealType.id)
     mealType: number;
 
-    @ManyToOne(() => MealStatus, mealStatus => mealStatus.id)
+  @ManyToOne(() => MealStatus, (mealStatus) => mealStatus.id)
     mealStatus: number;
 
-    @Column()
-    remark: String;
+  @Column()
+    remark: string;
 }

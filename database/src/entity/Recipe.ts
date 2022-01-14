@@ -1,32 +1,32 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
-import { Meal } from "./Meal";
-import { RecipeIngredients } from "./RecipeIngredients";
+import {
+  Entity, PrimaryGeneratedColumn, Column, OneToMany,
+} from 'typeorm';
+import { Meal } from './Meal';
+import { RecipeIngredients } from './RecipeIngredients';
 
 @Entity()
 export class Recipe {
-
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+  @Column()
     name: string;
 
-    @Column()
+  @Column()
     imagePath: string;
 
-    @Column()
+  @Column()
     description: string;
 
-    @Column()
+  @Column()
     instructions: string;
 
-    @Column()
+  @Column()
     rating: number;
 
-    @OneToMany(() => RecipeIngredients, recipeIngredients => recipeIngredients.recipe)
+  @OneToMany(() => RecipeIngredients, (recipeIngredients) => recipeIngredients.recipe)
     recipeIngredients!: RecipeIngredients[];
 
-    @OneToMany(() => Meal, meal => meal.plan)
+  @OneToMany(() => Meal, (meal) => meal.plan)
     meals: Meal[];
-
 }

@@ -1,33 +1,36 @@
-import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, OneToOne, ManyToMany, JoinTable, ManyToOne} from "typeorm";
-import { Ingredient } from "./Ingredient";
-import {Recipe} from "./Recipe";
-import { Unit } from "./Unit";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  ManyToOne,
+} from 'typeorm';
+import { Ingredient } from './Ingredient';
+import { Recipe } from './Recipe';
+import { Unit } from './Unit';
 
 @Entity()
 export class RecipeIngredients {
-
-    @PrimaryColumn()
+  @PrimaryColumn()
     ingredientId!: number;
 
-    @PrimaryColumn()
+  @PrimaryColumn()
     recipeId!: number;
 
-    @Column()
+  @Column()
     unitId!: number;
 
-    @ManyToOne(() => Recipe, recipe => recipe.recipeIngredients)
+  @ManyToOne(() => Recipe, (recipe) => recipe.recipeIngredients)
     recipe: number;
 
-    @ManyToOne(() => Ingredient, ingredient => ingredient.recipeIngredients)
+  @ManyToOne(() => Ingredient, (ingredient) => ingredient.recipeIngredients)
     ingredient: number;
 
-    @ManyToOne(() => Unit, unit => unit.recipeIngredients)
+  @ManyToOne(() => Unit, (unit) => unit.recipeIngredients)
     unit: number;
 
-    @Column()
+  @Column()
     amount: number;
 
-    @Column()
+  @Column()
     hint: string;
-
 }

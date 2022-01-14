@@ -1,28 +1,23 @@
-import "reflect-metadata";
-import {createConnection} from "typeorm";
-import {Request, Response, Router} from "express";
-import {User} from "./entity/User";
+import 'reflect-metadata';
+import { createConnection } from 'typeorm';
 import express from 'express';
 import bodyParser from 'body-parser';
-import {AppRoutes} from "./routes";
+import { AppRoutes } from './routes';
 
-createConnection().then(async connection => {
-
+createConnection()
+  .then(async () => {
     const app = express();
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
     const port = 4000;
-    const router = express.Router();
+    express.Router();
 
-    AppRoutes.forEach(r => {
-        app.use(r.route, r.class);
+    AppRoutes.forEach((r) => {
+      app.use(r.route, r.class);
     });
 
-    app.listen(port, () => {
-        return console.log(`server is listening on ${port}`);
-    });
-
-
-}).catch(error => console.log(error));
+    app.listen(port, () => console.log(`server is listening on ${port}`));
+  })
+  .catch((error) => console.log(error));

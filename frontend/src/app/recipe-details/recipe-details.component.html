@@ -1,1 +1,7 @@
-{{(json.stringify(recipe | async ))}}
+<div class="container" id="content" #content>
+  <app-recipe-details-forms [id]="1" [mode]="1"></app-recipe-details-forms>
+  <div>
+    {{(json.stringify(recipe | async ))}}
+  </div>
+</div>
+<input type="button" value="Download als pdf" class="btn btn-success" (click)="generatePdf()">

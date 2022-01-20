@@ -24,6 +24,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IngredientInsertFormComponent } from './ingredient-insert-form/ingredient-insert-form.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { RecipeDetailsFormsComponent } from './recipe-details-forms/recipe-details-forms.component';
 
 const routes = [
   {
@@ -85,6 +86,7 @@ const routes = [
     ProfileComponent,
     IngredientInsertFormComponent,
     IngredientDetailsComponent,
+    RecipeDetailsFormsComponent,
   ],
   imports: [
     BrowserModule,
